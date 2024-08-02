@@ -8,7 +8,6 @@ function App() {
 
     return (
         <div className="App">
-            <h1>Sivamani Test</h1>
             <DataForm setResponse={setResponse} />
             {response && <ResponseDisplay response={response} />}
         </div>
