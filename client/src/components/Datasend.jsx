@@ -38,24 +38,24 @@ const Datasend = ({ setResponse }) => {
     };
 
     return (
-        <div className="max-w-lg mx-auto p-4 bg-white rounded shadow-md">
-            <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="max-w-lg mx-auto p-6 bg-gradient-to-r from-green-400 to-blue-500 rounded-lg shadow-lg">
+            <form onSubmit={handleSubmit} className="space-y-6">
                 <textarea
                     value={jsonInput}
                     onChange={(e) => setJsonInput(e.target.value)}
-                    placeholder='{"data": ["7", "H", "k", "R", "18"]}'
+                    
                     rows="10"
                     cols="50"
-                    className="w-full p-2 border border-gray-300 rounded"
+                    className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
                 />
                 <button
                     type="submit"
-                    className="w-full py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600"
+                    className="w-full py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition duration-300"
                 >
                     Submit
                 </button>
             </form>
-            {error && <p className="mt-4 text-red-500">{error}</p>}
+            {error && <p className="mt-4 text-red-500 font-medium">{error}</p>}
         </div>
     );
 };
