@@ -23,7 +23,7 @@ const Datasend = ({ setResponse }) => {
                 return;
             }
 
-            const response = await axios.post('https://bajaj-65le.onrender.com/bfhl', {
+            const response = await axios.post('https://bajaj-1-cptt.onrender.com/bfhl', {
                 data,
                 user_id,
                 email,
