@@ -20,7 +20,7 @@ const Datasend = ({ setResponse }) => {
             }
 
             // Submit the data to the backend
-            const response = await axios.post('http://localhost:3000/bfhl', {
+            const response = await axios.post('https://bajaj-1-2-n5as.onrender.com/bfhl', {
                 data,
             });
 
@@ -31,24 +31,24 @@ const Datasend = ({ setResponse }) => {
     };
 
     return (
-        <div className="max-w-lg mx-auto p-6 bg-gradient-to-r from-green-400 to-blue-500 rounded-lg shadow-lg">
-            <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-md">
+            <form onSubmit={handleSubmit} className="space-y-4">
                 <textarea
                     value={jsonInput}
                     onChange={(e) => setJsonInput(e.target.value)}
-                    rows="10"
+                    rows="8"
                     cols="50"
                     placeholder='Enter JSON data here, e.g. {"data": ["A", "B", "1"]}'
-                    className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-500"
                 />
                 <button
                     type="submit"
-                    className="w-full py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition duration-300"
+                    className="w-full py-2 bg-gray-700 text-white font-semibold rounded-lg hover:bg-gray-800 transition duration-200"
                 >
                     Submit
                 </button>
             </form>
-            {error && <p className="mt-4 text-red-500 font-medium">{error}</p>}
+            {error && <p className="mt-4 text-red-600 font-medium">{error}</p>}
         </div>
     );
 };

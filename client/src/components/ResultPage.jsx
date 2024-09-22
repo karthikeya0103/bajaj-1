@@ -17,57 +17,57 @@ const ResultPage = ({ response }) => {
     };
 
     return (
-        <div className="max-w-lg mx-auto p-4 bg-white rounded shadow-md">
+        <div className="max-w-lg mx-auto p-6 bg-white border border-gray-200 rounded-md shadow-sm">
             {/* Toggle checkboxes for controlling visibility */}
-            <div className="space-y-2 mb-4">
+            <div className="space-y-3 mb-5">
                 <label className="flex items-center">
                     <input
                         type="checkbox"
                         checked={visibleSections.numbers}
                         onChange={() => toggleSection('numbers')}
-                        className="mr-2"
+                        className="mr-2 accent-gray-700"
                     />
-                    Numbers
+                    <span className="text-gray-700 font-medium">Numbers</span>
                 </label>
                 <label className="flex items-center">
                     <input
                         type="checkbox"
                         checked={visibleSections.alphabets}
                         onChange={() => toggleSection('alphabets')}
-                        className="mr-2"
+                        className="mr-2 accent-gray-700"
                     />
-                    Alphabets
+                    <span className="text-gray-700 font-medium">Alphabets</span>
                 </label>
                 <label className="flex items-center">
                     <input
                         type="checkbox"
                         checked={visibleSections.highest_alphabet}
                         onChange={() => toggleSection('highest_alphabet')}
-                        className="mr-2"
+                        className="mr-2 accent-gray-700"
                     />
-                    Highest Alphabet
+                    <span className="text-gray-700 font-medium">Highest Alphabet</span>
                 </label>
             </div>
 
             {/* Conditionally render sections based on checkbox selection */}
             {visibleSections.numbers && response.numbers.length > 0 && (
                 <div className="mb-4">
-                    <h2 className="text-xl font-semibold">Numbers</h2>
-                    <p>{response.numbers.join(', ')}</p>
+                    <h2 className="text-lg font-semibold text-gray-800">Numbers</h2>
+                    <p className="text-gray-600">{response.numbers.join(', ')}</p>
                 </div>
             )}
 
             {visibleSections.alphabets && response.alphabets.length > 0 && (
                 <div className="mb-4">
-                    <h2 className="text-xl font-semibold">Alphabets</h2>
-                    <p>{response.alphabets.join(', ')}</p>
+                    <h2 className="text-lg font-semibold text-gray-800">Alphabets</h2>
+                    <p className="text-gray-600">{response.alphabets.join(', ')}</p>
                 </div>
             )}
 
             {visibleSections.highest_alphabet && response.highest_alphabet.length > 0 && (
                 <div>
-                    <h2 className="text-xl font-semibold">Highest Alphabet</h2>
-                    <p>{response.highest_alphabet.join(', ')}</p>
+                    <h2 className="text-lg font-semibold text-gray-800">Highest Alphabet</h2>
+                    <p className="text-gray-600">{response.highest_alphabet.join(', ')}</p>
                 </div>
             )}
         </div>
