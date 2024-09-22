@@ -2,38 +2,31 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const Datasend = ({ setResponse }) => {
-    const [jsonInput, setJsonInput] = useState('');
-    const [error, setError] = useState(null);
+    const [jsonInput, setJsonInput] = useState(''); // To hold the JSON input
+    const [error, setError] = useState(null); // For error handling
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError(null);
+        setError(null); // Reset error state before submitting
 
         try {
-            const parsedInput = JSON.parse(jsonInput);
-            const {
-                data = [],
-                user_id = 'karthi143',
-                email = 'karthi143@gmail.com',
-                roll_number = 'AP21110010605'
-            } = parsedInput;
+            const parsedInput = JSON.parse(jsonInput); // Parse the JSON input
+            const { data = [] } = parsedInput; // Extract data array from JSON
 
+            // Validate if the data field is an array
             if (!data || !Array.isArray(data)) {
                 setError('Invalid input. Please provide data as an array.');
                 return;
             }
 
-            const response = await axios.post('https://bajaj-1-cptt.onrender.com/bfhl', {
+            // Submit the data to the backend
+            const response = await axios.post('http://localhost:3000/bfhl', {
                 data,
-                user_id,
-                email,
-                roll_number
             });
 
-            setResponse(response.data);
+            setResponse(response.data); // Set the response to display in UI
         } catch (error) {
-            console.error('Error submitting form:', error); 
-            setError('Invalid JSON input or server error.');
+            setError('Invalid JSON input. Please ensure the format is correct.');
         }
     };
 
@@ -43,9 +36,9 @@ const Datasend = ({ setResponse }) => {
                 <textarea
                     value={jsonInput}
                     onChange={(e) => setJsonInput(e.target.value)}
-                    
                     rows="10"
                     cols="50"
+                    placeholder='Enter JSON data here, e.g. {"data": ["A", "B", "1"]}'
                     className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
                 />
                 <button

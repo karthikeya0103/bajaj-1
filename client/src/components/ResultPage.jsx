@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 
 const ResultPage = ({ response }) => {
+    // State to handle the visibility of each section
     const [visibleSections, setVisibleSections] = useState({
         numbers: true,
         alphabets: true,
         highest_alphabet: true
     });
 
+    // Function to toggle the visibility of a section
     const toggleSection = (section) => {
         setVisibleSections((prevState) => ({
             ...prevState,
@@ -16,6 +18,7 @@ const ResultPage = ({ response }) => {
 
     return (
         <div className="max-w-lg mx-auto p-4 bg-white rounded shadow-md">
+            {/* Toggle checkboxes for controlling visibility */}
             <div className="space-y-2 mb-4">
                 <label className="flex items-center">
                     <input
@@ -45,19 +48,23 @@ const ResultPage = ({ response }) => {
                     Highest Alphabet
                 </label>
             </div>
-            {visibleSections.numbers && (
+
+            {/* Conditionally render sections based on checkbox selection */}
+            {visibleSections.numbers && response.numbers.length > 0 && (
                 <div className="mb-4">
                     <h2 className="text-xl font-semibold">Numbers</h2>
                     <p>{response.numbers.join(', ')}</p>
                 </div>
             )}
-            {visibleSections.alphabets && (
+
+            {visibleSections.alphabets && response.alphabets.length > 0 && (
                 <div className="mb-4">
                     <h2 className="text-xl font-semibold">Alphabets</h2>
                     <p>{response.alphabets.join(', ')}</p>
                 </div>
             )}
-            {visibleSections.highest_alphabet && (
+
+            {visibleSections.highest_alphabet && response.highest_alphabet.length > 0 && (
                 <div>
                     <h2 className="text-xl font-semibold">Highest Alphabet</h2>
                     <p>{response.highest_alphabet.join(', ')}</p>
