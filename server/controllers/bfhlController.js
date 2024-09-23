@@ -16,7 +16,7 @@ const postData = async (req, res) => {
 
     const numbers = data.filter(item => !isNaN(item));
     const alphabets = data.filter(item => isNaN(item));
-    const highestAlphabet = alphabets.sort((a, b) => b.localeCompare(a, undefined, { sensitivity: 'base' }))[0];
+    const highest_lowercase_alphabet = alphabets.sort((a, b) => b.localeCompare(a, undefined, { sensitivity: 'base' }))[0];
 
     try {
         let user = await User.findOne({ user_id });
@@ -25,14 +25,14 @@ const postData = async (req, res) => {
 
             user.numbers = numbers;
             user.alphabets = alphabets;
-            user.highest_alphabet = highestAlphabet ? [highestAlphabet] : [];
+            user.highest_alphabet = highest_lowercase_alphabet ? [highest_lowercase_alphabet] : [];
             await user.save();
         } else {
             user = new User({
                 user_id,
                 numbers,
                 alphabets,
-                highest_alphabet: highestAlphabet ? [highestAlphabet] : []
+                highest_alphabet: highest_lowercase_alphabet ? [highest_lowercase_alphabet] : []
             });
             await user.save();
         }
@@ -42,7 +42,7 @@ const postData = async (req, res) => {
             user_id,
             numbers,
             alphabets,
-            highest_alphabet: highestAlphabet ? [highestAlphabet] : []
+            highest_alphabet: highest_lowercase_alphabet ? [highest_lowercase_alphabet] : []
         });
     } catch (error) {
         res.status(500).json({

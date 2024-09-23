@@ -5,7 +5,7 @@ const ResultPage = ({ response }) => {
     const [visibleSections, setVisibleSections] = useState({
         numbers: true,
         alphabets: true,
-        highest_alphabet: true
+        highest_lowercase_alphabet: true
     });
 
     // Function to toggle the visibility of a section
@@ -41,8 +41,8 @@ const ResultPage = ({ response }) => {
                 <label className="flex items-center">
                     <input
                         type="checkbox"
-                        checked={visibleSections.highest_alphabet}
-                        onChange={() => toggleSection('highest_alphabet')}
+                        checked={visibleSections.highest_lowercase_alphabet}
+                        onChange={() => toggleSection('highest_lowercase_alphabet')}
                         className="mr-2 accent-gray-700"
                     />
                     <span className="text-gray-700 font-medium">Highest Alphabet</span>
@@ -64,10 +64,10 @@ const ResultPage = ({ response }) => {
                 </div>
             )}
 
-            {visibleSections.highest_alphabet && response.highest_alphabet.length > 0 && (
+            {visibleSections.highest_lowercase_alphabet && response.highest_lowercase_alphabet.length > 0 && (
                 <div>
                     <h2 className="text-lg font-semibold text-gray-800">Highest Alphabet</h2>
-                    <p className="text-gray-600">{response.highest_alphabet.join(', ')}</p>
+                    <p className="text-gray-600">{response.highest_lowercase_alphabet.join(', ')}</p>
                 </div>
             )}
         </div>
